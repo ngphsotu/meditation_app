@@ -14,25 +14,11 @@ class HomePage extends StatelessWidget {
       body: SafeArea(
         child: orientation == Orientation.portrait
             ? Stack(
-                children: [
-                  const GetStartedBackground(),
-                  const FractionallySizedBox(
+                children: const [
+                  GetStartedBackground(),
+                  FractionallySizedBox(
                     heightFactor: 0.35,
                     child: GetStartedHeader(),
-                  ),
-                  Align(
-                    alignment: const Alignment(0.0, 0.8),
-                    child: GetStartedButton(
-                      fixedSize: MaterialStateProperty.all(
-                        Size(
-                          size.width * 0.4,
-                          size.height * 0.065,
-                        ),
-                      ),
-                      textStyle: MaterialStateProperty.all(
-                        PrimaryFont.medium(size.height * 0.015),
-                      ),
-                    ),
                   ),
                 ],
               )
@@ -49,7 +35,23 @@ class HomePage extends StatelessWidget {
                   ),
                   Expanded(
                     child: Stack(
-                      children: const [GetStartedBackground()],
+                      children: [
+                        const GetStartedBackground(),
+                        Align(
+                          alignment: const Alignment(0.0, 0.8),
+                          child: GetStartedButton(
+                            fixedSize: MaterialStateProperty.all(
+                              Size(
+                                size.width * 0.4,
+                                size.height * 0.065,
+                              ),
+                            ),
+                            textStyle: MaterialStateProperty.all(
+                              PrimaryFont.medium(size.height * 0.015),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
@@ -75,7 +77,8 @@ class GetStartedButton extends StatelessWidget {
       onPressed: () {
         //Navigator.of(context).pushNamed('$ChooseTopicPage');
       },
-      child: Text('GET STARTED'),
+      // ignore: sort_child_properties_last
+      child: const Text('GET STARTED'),
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(kColorLightGrey),
         shape: MaterialStateProperty.all(
